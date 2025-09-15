@@ -131,6 +131,10 @@ class ViteLoader(object):
                 </script>
                 """
         return ""
+    
+    def generate_vite_asset_url(self, path: str) -> str:
+        manifest_entry = self.manifest[path]
+        return urljoin(settings.static_url, manifest_entry["file"])
 
     def generate_vite_asset(
         self, path: str, scripts_attrs: Optional[Dict[str, str]] = None
